@@ -129,47 +129,82 @@ int main() {
     }
     return 0;
 }
-// ****************************************************************26/04
-#include <vector>
-#include <climits>
-
+// ************************************************************Merge sort on doubly linked lists
+#include <bits/stdc++.h>
 using namespace std;
+struct Node {
+    int data;
+    struct Node *next, *prev;
 
-class Triplet {
-public:
-    int minSum;
-    int secondMinSum;
-    int minSumIndex;
-
-    Triplet(int minSum, int secondMinSum, int minSumIndex) : minSum(minSum), secondMinSum(secondMinSum), minSumIndex(minSumIndex) {}
+    Node(int x) {
+        data = x;
+        next = NULL;
+        prev = NULL;
+    }
 };
-
 class Solution {
-public:
-    int minFallingPathSum(vector<vector<int>>& grid) {
-        int n = grid.size();
-        return minFallingPathSumHelper(0, grid).minSum;
-    }
-
-    Triplet minFallingPathSumHelper(int row, vector<vector<int>>& grid) {
-        if (row == grid.size()) {
-            return Triplet(0, 0, 0);
+  public:
+    struct Node *sortDoubly(struct Node *head) {
+        vector<int> num;
+        struct Node *temp = head;
+        while(temp != NULL){
+            num.push_back(temp -> data);
+            temp = temp -> next;
         }
-
-        Triplet nextRowTriplet = minFallingPathSumHelper(row + 1, grid);
-        Triplet currentTriplet(INT_MAX, INT_MAX, -1);
-
-        for (int col = 0; col < grid[0].size(); col++) {
-            int value = grid[row][col] + ((col != nextRowTriplet.minSumIndex) ? nextRowTriplet.minSum : nextRowTriplet.secondMinSum);
-            if (value <= currentTriplet.minSum) {
-                currentTriplet.secondMinSum = currentTriplet.minSum;
-                currentTriplet.minSum = value;
-                currentTriplet.minSumIndex = col;
-            } else if (value < currentTriplet.secondMinSum) {
-                currentTriplet.secondMinSum = value;
-            }
+        sort(num.begin(), num.end());
+        
+        temp = head;
+        int ind = 0;
+        while(temp){
+            temp -> data = num[ind++];
+            temp = temp -> next;
         }
-
-        return currentTriplet;
+        return head;
     }
 };
+void insert(struct Node **head, int data) {
+    struct Node *temp = new Node(data);
+    if (!(*head))
+        (*head) = temp;
+    else {
+        temp->next = *head;
+        (*head)->prev = temp;
+        (*head) = temp;
+    }
+}
+void print(struct Node *head) {
+    struct Node *temp = head;
+    while (head) {
+        cout << head->data << ' ';
+        temp = head;
+        head = head->next;
+    }
+    cout << endl;
+    while (temp) {
+        cout << temp->data << ' ';
+        temp = temp->prev;
+    }
+    cout << endl;
+}
+void swap(int *A, int *B) {
+    int temp = *A;
+    *A = *B;
+    *B = temp;
+}
+int main(void) {
+    long test;
+    cin >> test;
+    while (test--) {
+        int n, tmp;
+        struct Node *head = NULL;
+        cin >> n;
+        while (n--) {
+            cin >> tmp;
+            insert(&head, tmp);
+        }
+        Solution ob;
+        head = ob.sortDoubly(head);
+        print(head);
+    }
+    return 0;
+}
