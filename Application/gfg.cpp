@@ -208,3 +208,27 @@ int main(void) {
     }
     return 0;
 }
+// ******************************************************************************Delete Middle Linked List
+class Solution{
+    public:
+    Node* deleteMid(Node* head)
+    {
+        // Your Code Here
+        Node* slow = head;
+        Node* fast = head -> next;
+        Node* prev = NULL;
+        while(fast != NULL){
+            prev = slow;
+            slow = slow -> next;
+            fast = fast -> next;
+            if(fast!=NULL){
+                fast = fast -> next;
+            }
+        }
+        Node* temp = slow -> next;
+        prev -> next = temp;
+        slow -> next = NULL;
+        delete slow;
+        return head;
+    }
+};
