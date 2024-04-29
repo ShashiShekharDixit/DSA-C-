@@ -232,3 +232,29 @@ class Solution{
         return head;
     }
 };
+// *********************************************************************************Remove every Kth Node
+class Solution {
+    public:
+    Node* deleteK(Node *head,int K){
+      //Your code here
+      if(head==NULL or K == 1){
+          return NULL;
+      }
+      Node* temp1 = head;
+      Node* temp2 = head;
+      int p = K - 1;
+      int k = K - 1;
+      while(temp1){
+          if(k > 0){
+              temp2 = temp1;
+              k--;
+          }
+          else {
+              k = p;
+              temp2 -> next = temp1 -> next;
+          }
+          temp1 = temp1 -> next;
+      }
+      return head;
+    }
+};
