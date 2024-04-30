@@ -258,3 +258,33 @@ class Solution {
       return head;
     }
 };
+// *********************************************************Add two numbers represented by Linked list
+class Solution
+{
+    public:  
+    // Calculate_Sum_Recursively
+    Node* func(Node* num1, Node* num2, int c){
+        if(!num1 and !num2) return new Node(c); 
+        int sum = (num1 ? num1->data : 0) + (num2 ? num2->data : 0) + c;
+        Node* nn = new Node(sum % 10); 
+        nn->next = func((num1 ? num1->next : num1), (num2 ? num2->next : num2), sum / 10);
+        return nn;
+    }
+    
+    // Reversing_Linked_List
+    Node* rev(Node* head){
+        Node* tmp = NULL, *prev = NULL, *curr = head;
+        while(curr) tmp = curr->next, curr->next = prev, prev = curr, curr = tmp;
+        return prev;
+    }
+    // Remove_Leading_Zeros
+    Node* rz(Node* head){
+        while(head and head->data == 0) head = head->next;
+        return head == NULL ? new Node(0) : head;
+    }
+    
+    // Main Function
+    struct Node* addTwoLists(struct Node* num1, struct Node* num2){   
+        return rz(rev(func(rev(rz(num1)), rev(rz(num2)), 0))); 
+    }
+};
