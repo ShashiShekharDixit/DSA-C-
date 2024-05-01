@@ -213,7 +213,6 @@ class Solution{
     public:
     Node* deleteMid(Node* head)
     {
-        // Your Code Here
         Node* slow = head;
         Node* fast = head -> next;
         Node* prev = NULL;
@@ -236,7 +235,6 @@ class Solution{
 class Solution {
     public:
     Node* deleteK(Node *head,int K){
-      //Your code here
       if(head==NULL or K == 1){
           return NULL;
       }
@@ -262,7 +260,6 @@ class Solution {
 class Solution
 {
     public:  
-    // Calculate_Sum_Recursively
     Node* func(Node* num1, Node* num2, int c){
         if(!num1 and !num2) return new Node(c); 
         int sum = (num1 ? num1->data : 0) + (num2 ? num2->data : 0) + c;
@@ -271,20 +268,48 @@ class Solution
         return nn;
     }
     
-    // Reversing_Linked_List
     Node* rev(Node* head){
         Node* tmp = NULL, *prev = NULL, *curr = head;
         while(curr) tmp = curr->next, curr->next = prev, prev = curr, curr = tmp;
         return prev;
     }
-    // Remove_Leading_Zeros
     Node* rz(Node* head){
         while(head and head->data == 0) head = head->next;
         return head == NULL ? new Node(0) : head;
     }
     
-    // Main Function
     struct Node* addTwoLists(struct Node* num1, struct Node* num2){   
         return rz(rev(func(rev(rz(num1)), rev(rz(num2)), 0))); 
+    }
+};
+// ********************************************************Arrange the vowels and constants
+class Solution {
+  public:
+    bool is_vowel(char c){
+        if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+        return true;
+        return false;
+    }
+    struct Node* arrangeCV(Node* head) {
+        Node* vowels = new Node('#');
+        Node* cons = new Node('#');
+        Node* tail = vowels;
+        Node* temp = cons;
+        while(head){
+            if(is_vowel(head -> data)){
+                tail -> next = new Node(head -> data);
+                tail = tail -> next;
+            }
+            else {
+                temp -> next = new Node(head -> data);
+                temp = temp ->  next;
+            }
+            head = head -> next;
+        }
+        if(tail)
+        tail -> next = cons -> next;
+        if(tail)
+        return vowels -> next;
+        return cons -> next;
     }
 };
