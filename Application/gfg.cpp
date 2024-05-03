@@ -350,3 +350,37 @@ class Solution
     }
 
 };
+// ******************************************************************Kth distance from root
+class Solution
+{
+    public:
+    vector<int> Kdistance(struct Node *root, int k)
+    {
+      queue<struct Node*> nodes;
+      vector<int> data;
+      nodes.push(root);
+      while(!nodes.empty()){
+          if(k == 0){
+              while(!nodes.empty()){
+                  struct Node* node = nodes.front();
+                  nodes.pop();
+                  data.push_back(node -> data);
+              }
+              break;
+          }
+          else {
+              int size = nodes.size();
+              while(size--){
+                  struct Node* node = nodes.front();
+                  nodes.pop();
+                  if(node -> left)
+                  nodes.push(node -> left);
+                  if(node -> right)
+                  nodes.push(node -> right);
+              }
+              k--;
+          }
+      }
+      return data;
+    }
+};
