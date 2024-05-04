@@ -384,3 +384,33 @@ class Solution
       return data;
     }
 };
+// ******************************************************(Contruct Binary Tree from Inorder and Postorder)
+class Solution
+{
+    public:
+
+   Node *f(int post[],int poststart,int postend,int in[],int instart,
+    int inend,unordered_map<int,int>&mp)
+    {
+        if (poststart>postend or instart>inend) return NULL;
+        
+        Node *root=new Node(post[postend]);
+        int element=mp[root->data];
+        int nelements=element-instart;
+        root->left=f(post,poststart,poststart+nelements-1,
+        in,instart,element-1,mp);
+        root->right=f(post,poststart+nelements,postend-1,in
+        ,element+1,inend,mp);
+        
+        return root;
+    }
+    
+    Node *buildTree(int in[], int post[], int n) {        
+        unordered_map<int,int>mp;
+        for(int i=0;i<n;i++)
+        {
+            mp[in[i]]=i;
+        }
+        return f(post,0,n-1,in,0,n-1,mp);
+    }
+};
