@@ -207,3 +207,11 @@ public:
         return x;
     }
 };
+// ******************************************************************05/05(Delete Node in a linked list)
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node -> val = node -> next -> val;
+        node -> next = node -> next -> next;
+    }
+};

@@ -414,3 +414,30 @@ class Solution
         return f(post,0,n-1,in,0,n-1,mp);
     }
 };
+// ********************************************************(Vertical Sum)
+class Solution{
+  public:
+  int mn, mx;
+  vector<int> ans;
+  void calc(Node* root, int level){
+      if(!root) return;
+      mn = min(mn, level);
+      mx = max(mx, level);
+      calc(root -> left, level - 1);
+      calc(root -> right, level + 1);
+  }
+  void calculate(Node* root, int level){
+      if(!root) return;
+      ans[abs(mn) + level] += root -> data;
+      calculate(root -> left, level - 1);
+      calculate(root -> right, level + 1);
+  }
+    vector <int> verticalSum(Node *root) {
+        mn = 0;
+        mx = 0;
+        calc(root, 0);
+        ans.resize(mx - mn + 1, 0);
+        calculate(root, 0);
+        return ans;
+    }
+};
