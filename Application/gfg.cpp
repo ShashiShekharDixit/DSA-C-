@@ -474,3 +474,27 @@ vector<int> noSibling(Node* node)
        return ans;
    }
 }
+// ***********************************************************07/05
+vector<int> reverseLevelOrder(Node *root)
+{
+    vector<int> ans;
+    queue<Node*> q;
+    q.push(root);
+   
+    while(!q.empty())
+    {
+        Node * cur = q.front();
+        q.pop();
+        ans.push_back(cur->data);
+        if(cur->right!=nullptr)
+        {
+            q.push(cur->right);
+        }
+        if(cur->left!=nullptr)
+        {
+            q.push(cur->left);
+        }
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
