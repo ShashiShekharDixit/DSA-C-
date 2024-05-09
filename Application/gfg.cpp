@@ -526,3 +526,28 @@ class Solution {
         return paths;
     }
 };
+// **************************************************************09/05
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+  public:
+    bool divisorGame(int n) {
+        return n % 2 == 0;
+    }
+};
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+
+        Solution obj;
+        bool ans = obj.divisorGame(n);
+        if (ans)
+            cout << "True" << endl;
+        else
+            cout << "False" << endl;
+    }
+    return 0;
+}
