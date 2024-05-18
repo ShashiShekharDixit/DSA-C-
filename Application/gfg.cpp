@@ -827,3 +827,17 @@ public:
         return -1;
     }
 };
+// *****************************************************************18/05(Find the highest Number)
+class Solution() {
+public:
+    int findPeakElement(vector<int>& a) 
+    {
+        // Code here.
+        for(int i = 1; i < a.size() - 1; i++){
+            if(a[i] > a[i + 1] && a[i] > a[i - 1]){
+                return a[i];
+            }
+        }
+        return max(a[0], a[a.size() - 1]);
+    }
+};
