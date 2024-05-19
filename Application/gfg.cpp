@@ -841,3 +841,16 @@ public:
         return max(a[0], a[a.size() - 1]);
     }
 };
+// ********************************************************************19/05(Find the Closest One)
+class Solution{
+    public:
+    int findClosest( int n, int k,int arr[]) 
+    {
+        int x=lower_bound(arr, arr+n, k)-arr;
+        
+        if(x!=0 && (x==n || k-arr[x-1]<arr[x]-k))
+        return arr[x-1];
+        
+        return arr[x];
+    }
+};
