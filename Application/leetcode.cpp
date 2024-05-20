@@ -607,3 +607,14 @@ public:
         return max(totalSum - positiveMin, totalSum + negativeMax);
     }
 };
+// *************************************************************************20/05(Sum of All subsets XOR totals)
+class Solution {
+public:
+    int subsetXORSum(vector<int>& nums) {
+        int sumTotal = 0;
+        for(int num : nums){
+            sumTotal |= num;
+        }
+        return sumTotal << (nums.size() - 1);
+    }
+};
