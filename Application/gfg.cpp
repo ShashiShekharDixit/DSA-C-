@@ -948,3 +948,17 @@ public:
         return ans;
     }
 };
+// ***********************************************************************Kth Palindrome(23/05)
+class Solution{
+public:
+    int kPalindrome(string str, int n, int k)
+    {
+        vector<int> curr(n + 1, 0), ahead(n + 1, 0);
+        for(int x = n - 1; x >= 0; x--){
+            for(int y = n - 1; y >= 0; y--)
+            curr[y] = max({ahead[y],curr[y + 1], (str[x]==str[n - y - 1])?1 + ahead[y + 1]:0});
+            ahead = curr;
+        }
+        return n - curr[0] <= k;
+    }
+};
