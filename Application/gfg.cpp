@@ -989,4 +989,25 @@ public:
         }
         explore(nums, k, index + 1);
     }
+};
+// ***************************************************************************You ans Yours Books
+class Solution {
+  public:
+    long long max_Books(int arr[], int n, int k) {
+        long long sum = 0;
+        long long maxsum = 0;
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[i]<= k)
+            {
+                sum = sum + arr[i];
+            }
+            else if(arr[i]>k)
+            {
+                sum = 0;
+            }
+            maxsum = max(maxsum, sum);
+        }
+        return maxsum;
+    }
 }; 
