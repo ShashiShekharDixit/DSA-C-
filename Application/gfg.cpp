@@ -990,7 +990,7 @@ public:
         explore(nums, k, index + 1);
     }
 };
-// ***************************************************************************You ans Yours Books
+// ***************************************************************************You ans Yours Books(25/05)
 class Solution {
   public:
     long long max_Books(int arr[], int n, int k) {
@@ -1011,3 +1011,28 @@ class Solution {
         return maxsum;
     }
 }; 
+// **********************************************************************Minimum Cost to make two string Identical(26/05)
+class Solution {
+
+  public:
+    int findMinCost(string x, string y, int costX, int costY) {
+        int n = x.size(), m = y.size();
+        vector<int>prev(m + 1, 0), curr(m + 1, 0);
+        for(int i = 1; i <= m; i++){
+            prev[i] = costY*i;
+        }
+        for(int i = 0; i < n; i++){
+            curr[0] = ((i + 1)*costX);
+            for(int j = 0; j < m; j++){
+                if(x[i]==y[j]){
+                    curr[j + 1]= prev[j];
+                }
+                else {
+                    curr[j + 1]= min(costX + prev[j + 1], costY + curr[j]);
+                }
+            }
+            prev = curr;
+        }
+        return prev[m];
+    }
+};
