@@ -1122,3 +1122,14 @@ class Solution {
         return solve(n-1,m-1,s1,s2,dp)%mod;
     }
 };
+// *******************************************************************Swap two nibbles in a byte(31/05)
+class Solution {
+  public:
+    int swapNibbles(int n) {
+        int a = n&15;
+        int b = n&240;
+        b = b >> 4;
+        a = a << 4;
+        return a + b;
+    }
+};
