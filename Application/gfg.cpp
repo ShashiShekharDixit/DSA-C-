@@ -1152,3 +1152,44 @@ class Solution {
         return "EVEN";
     }
 };
+// **************************************************************************Construct list using given q XOR queries(02/06)
+class Solution {
+  public:
+    vector<int> constructList(int q, vector<vector<int>> &queries) {
+        int n=queries.size();
+        int last=-1;
+        vector<int>ans;
+        for(int i=0;i<queries.size();i++){
+            if(queries[i][0]==1){
+                last=i;
+            }
+        }
+        if(last==-1){
+            for(int i=0;i<n;i++){
+                ans.push_back(queries[i][1]);
+            }
+            ans.push_back(0);
+        }
+        else{
+            for(int i=last+1;i<n;i++){
+              if(queries[i][0]==0)
+                ans.push_back(queries[i][1]);
+            }
+            int xori=0;
+            for(int i=last;i>=0;i--){
+                if(queries[i][0]==1)
+                 xori=xori^queries[i][1];
+                else{
+                    queries[i][1]=queries[i][1]^xori;
+                }
+            }
+            for(int i=0;i<=last;i++){
+                if(queries[i][0]==0)
+                 ans.push_back(queries[i][1]);
+            }
+            ans.push_back(xori);
+        }
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+};
