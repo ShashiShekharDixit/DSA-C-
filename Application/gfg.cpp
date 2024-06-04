@@ -1215,3 +1215,34 @@ class Solution {
         return sum % mod;
     }
 };
+// ************************************************************************Binary Rrepresentation of next Number(04/06)
+string binaryNextNumber(string s) {
+        int n = s.length();
+        int countOne = 0;
+        int idxZero = -1;
+        for(int i=0;i<n;++i){
+            if(s[i] == '1') {
+                ++countOne;
+            } else {
+                idxZero = i;
+            }
+        }
+        string ans = "";
+        if(countOne == n) {
+            ans += "1";
+            for(int i=0;i<n;++i) {
+                ans += "0";
+            }
+        } else {
+            s[idxZero] = '1';
+            for(int i=idxZero+1;i<n;++i) {
+                s[i] = '0';
+            }
+            int i = 0;
+            while(s[i] == '0') ++i;
+            for(int j=i;j<n;++j) {
+                ans += s[j];
+            }
+        }
+        return ans;
+    }
