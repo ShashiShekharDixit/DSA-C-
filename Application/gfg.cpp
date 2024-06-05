@@ -1246,3 +1246,30 @@ string binaryNextNumber(string s) {
         }
         return ans;
     }
+// ***************************************************************************Swapping pair make sum equal(05/06)
+class Solution {
+  public:
+    int findSwapValues(int a[], int n, int b[], int m){
+        int suma=0,sumb=0;
+        for(int i=0; i<n; i++){
+            suma+=a[i];
+        }
+        for(int i=0; i<m; i++){
+            sumb+=b[i];
+        }
+        if((suma-sumb)%2!=0){
+            return -1;
+        }
+        unordered_set<int> setb;
+        for(int i=0; i<m; i++){
+            setb.insert(b[i]);
+        }
+        int target=(suma-sumb)/2;
+        for (int i = 0; i < n; i++) {
+            if (setb.find(a[i]-target)!=setb.end()) {
+                return 1;
+            }
+        }
+        return -1;        
+    }
+};
