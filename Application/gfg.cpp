@@ -1298,3 +1298,18 @@ public:
             return maxi;
         }
 }
+// ****************************************************************************Maximum occured Integer(07/06)
+class Solution {
+  public:
+    int maxOccured(int n, int l[], int r[], int maxx) {
+        vector<int>v(maxx + 2);
+        for(int i = 0; i < n; i++){
+            v[l[i]]++;
+            v[r[i]+1]--;
+        }
+        for(int i = 1; i <= maxx; i++){
+            v[i] = v[i] + v[i - 1];
+        }
+        return max_element(v.begin(), v.end()) - v.begin();
+    }
+};
