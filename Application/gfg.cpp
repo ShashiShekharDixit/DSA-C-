@@ -1355,3 +1355,30 @@ class solution {
         sort(bolts, bolts+n);
     }
 }
+// ******************************************************************************Maximum Tip Calculator(11/06)
+class Solution {
+  public:
+    using ll = long long;
+    long long maxTip(int n, int x, int y, vector<int> &arr, vector<int> &brr) {
+        ll ans = 0, sum = 0;
+        int my = n - min(x, n), c = 0;
+        priority_queue<int> pq;
+        for(auto a : arr)
+        sum += a;
+        for(int i = 0; i < n; i++){
+            pq.push(brr[i] - arr[i]);
+        }
+        while(c < my){
+            sum += pq.top();
+            pq.pop();
+            c++;
+        }
+        while(c <= y){
+            ans = max(ans, sum);
+            sum += pq.top();
+            pq.pop();
+            c++;
+        }
+        return ans;
+    }
+};
