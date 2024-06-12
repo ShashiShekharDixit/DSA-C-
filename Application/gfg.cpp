@@ -1382,3 +1382,26 @@ class Solution {
         return ans;
     }
 };
+// *********************************************************************Count NUmbers Containing 4(12/06)
+class Solution {
+  public:
+    int countNumberswith4(int n) {
+        int count = 0;
+        for(int i = 1; i <= n; ++i){
+            if(hasDigit4(i)){
+                ++count;
+            }
+        }
+        return count;
+    }
+    private:
+    bool hasDigit4(int num){
+        while(num > 0){
+            if(num % 10 == 4){
+                return true;
+            }
+            num /= 10;
+        }
+        return false;
+    }
+};
