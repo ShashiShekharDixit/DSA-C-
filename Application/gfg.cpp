@@ -1422,3 +1422,21 @@ class Solution {
        return ans;
     }
 };
+// ****************************************************************************ArmStrong Number(14/06)
+class Solution {
+  public:
+    string armstrongNumber(int n){
+        int original = n;
+        int d1 = n % 10;
+        n /= 10;
+        int d2 = n % 10;
+        n /= 10;
+        int d3 = n % 10;
+        int sumofcubes = (d1 * d1 * d1) + (d2 * d2 * d2) + (d3 * d3 * d3);
+        if(sumofcubes == original){
+            return "Yes";
+        }else {
+            return "No";
+        }
+    }
+};
