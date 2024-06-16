@@ -1482,3 +1482,25 @@ class Solution {
         return ans;
     }
 };
+// **************************************************************************Prime Path with Target Sum(16/06)
+class Solution {
+  public:
+   bool isprime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+        vector<int> getPrimes(int n) {
+        vector<int> a(2, -1);  
+        for (int i = 2; i <= n / 2; i++) {
+            if (isprime(i) && isprime(n - i)) {
+                a[0] = i;
+                a[1] = n - i;
+                return a;
+            }
+        }
+        return a;
+    }
+};
