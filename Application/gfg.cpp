@@ -1546,3 +1546,22 @@ class Solution {
         return l*l*h;
     }
 };
+// ***************************************************************************Integral points of Triangle(20/06)
+class Solution {
+public:
+    long long int gcd(long long int a, long long int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+    long long int InternalCount(long long int p[], long long int q[], long long int r[]) {
+        long long int area = abs(p[0] * (q[1] - r[1]) + q[0] * (r[1] - p[1]) + r[0] * (p[1] - q[1]));
+        long long int bpq = gcd(abs(p[0] - q[0]), abs(p[1] - q[1]));
+        long long int bqr = gcd(abs(q[0] - r[0]), abs(q[1] - r[1]));
+        long long int brp = gcd(abs(r[0] - p[0]), abs(r[1] - p[1]));
+        long long int boundaryPoints = bpq + bqr + brp;
+        long long int A = area / 2;
+        long long int interiorPoints = A - (boundaryPoints / 2) + 1;
+        return interiorPoints;
+    }
+};
