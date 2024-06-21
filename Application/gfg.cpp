@@ -1565,3 +1565,36 @@ public:
         return interiorPoints;
     }
 };
+// *****************************************************************************Compare two Fraction(21/06)
+class Solution {
+  public:
+    string compareFrac(string str) {
+      int a,b,c,d;
+       a=b=c=d=0;
+       regex re("([0-9]+)\\/([0-9]+), ([0-9]+)\\/([0-9]+)",
+       regex_constants :: ECMAScript);
+       smatch sm;
+       if(regex_search(str,sm,re)){
+           a=stoi(sm[1]);
+           b=stoi(sm[2]);
+           
+           c=stoi(sm[3]);
+           d=stoi(sm[4]);
+       }
+       string ans="";
+       if(a*d>b*c){
+           ans+=to_string(a);
+           ans+="/";
+           ans+=to_string(b);
+       }
+       else if(a*d<b*c){
+           ans+=to_string(c);
+           ans+="/";
+           ans+=to_string(d);
+       }
+       else{
+           ans="equal";
+       }
+       return ans;
+    }
+};
