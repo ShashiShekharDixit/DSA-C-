@@ -1631,3 +1631,28 @@ class Solution {
         return res;
     }
 };
+// ***********************************************************************************print Bracket Number(23/06)
+class Solution {
+  public:
+    vector<int> bracketNumbers(string str) {
+        stack<int> parenthesis;
+        vector<int> ans;
+        int p = 1;
+        for(int i = 0; i < str.size(); ++i){
+            if(str[i] == '('){
+                parenthesis.push(p);
+                ans.push_back(p);
+                ++p;
+            }else if(str[i] == ')'){
+                if(parenthesis.empty()){
+                    ans.push_back(p);
+                    ++p;
+                }else {
+                    ans.push_back(parenthesis.top());
+                    parenthesis.pop();
+                }
+            }
+        }
+        return ans;
+    }
+};

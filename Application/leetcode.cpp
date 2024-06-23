@@ -1430,7 +1430,7 @@ public:
         return initialSatisfaction + maxExtraSatisfaction;   
     }
 };
-// ******************************************************************************************22/06(Count Number of Nice Subarray)
+// ***************************************************************************************22/06(Count Number of Nice Subarray)
 class Solution {
 public:
     int numberOfSubarrays(vector<int>& nums, int k) {
@@ -1446,5 +1446,36 @@ public:
             cnt[t]++;
         }
         return ans;
+    }
+};
+// *************************************************************23/06(Longest Continuous SubarrayWith Absolute Diff Less Than or Equal to limit)
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums, int limit) {
+        deque<int> increase;
+        deque<int> decrease;
+        int max_len = 0;
+        int left = 0;
+        for (int right = 0; right < nums.size(); ++right) {
+            while (!increase.empty() && nums[right] < increase.back()) {
+                increase.pop_back();
+            }
+            increase.push_back(nums[right]);
+            while (!decrease.empty() && nums[right] > decrease.back()) {
+                decrease.pop_back();
+            }
+            decrease.push_back(nums[right]);
+            while (decrease.front() - increase.front() > limit) {
+                if (nums[left] == decrease.front()) {
+                    decrease.pop_front();
+                }
+                if (nums[left] == increase.front()) {
+                    increase.pop_front();
+                }
+                ++left;
+            }
+            max_len = std::max(max_len, right - left + 1);
+        }
+        return max_len;
     }
 };
