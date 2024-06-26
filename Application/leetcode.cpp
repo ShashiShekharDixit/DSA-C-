@@ -1479,3 +1479,68 @@ public:
         return max_len;
     }
 };
+// ***************************************************************************24/06(Minimum NUmber of K Consecutive Bit Flip)
+class Solution {
+public:
+    int minKBitFlips(vector<int>& nums, int k) {
+        int n = nums.size();
+        int flipped = 0;
+        int res = 0;
+        vector<int> isFlipped(n, 0);
+        for(int i = 0; i < n; ++i){
+            if(i >= k) {
+                flipped ^= isFlipped[ i - k];
+            }
+            if( flipped == nums[i]) {
+                if( i + k > n){
+                    return -1;
+                }
+                isFlipped[i] = 1;
+                flipped ^= 1;
+                res++;
+            }
+        }
+        return res;
+    }
+};
+// ******************************************************************************25/06(Binary Search Tree to Greater sum tree)
+class Solution {
+private:
+    int sum = 0;
+    void traverse(TreeNode* root){
+        if(root) {
+            traverse(root -> right);
+            sum += root -> val;
+            root -> val = sum;
+            traverse(root -> left);
+        }
+    }
+public:
+    TreeNode* bstToGst(TreeNode* root) {
+        traverse(root);
+        return root;
+    }
+};
+// ********************************************************************************26/06(Balance a Binary Search Tree)
+class Solution {
+public:
+    vector<TreeNode*> sortedArr;
+    TreeNode* balanceBST(TreeNode* root) {
+        inorderTraverse(root);
+        return sortedArrayToBST(0, sortedArr.size() - 1);
+    }
+    void inorderTraverse(TreeNode* root) {
+        if (root == NULL) return;
+        inorderTraverse(root->left);
+        sortedArr.push_back(root);
+        inorderTraverse(root->right);
+    }
+    TreeNode* sortedArrayToBST(int start, int end) {
+        if (start > end) return NULL;
+        int mid = (start + end) / 2;
+        TreeNode* root = sortedArr[mid];
+        root->left = sortedArrayToBST(start, mid - 1);
+        root->right = sortedArrayToBST(mid + 1, end);
+        return root;
+    }
+};

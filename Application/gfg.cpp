@@ -1656,3 +1656,58 @@ class Solution {
         return ans;
     }
 };
+// *******************************************************************************Summared Matrix(24/06)
+class Solution {
+  public:
+    long long sumMatrix(long long n, long long q) {
+        if(q < 2) return 0;
+        long long l = 2;
+        long long r = n * 2;
+        if(q > r) return 0;
+        return min (abs(q - l), abs(q - r)) + 1;
+    }
+};
+// **********************************************************************************Left Rotate Matrix K times(25/06)
+class Solution {
+  public:
+    vector<vector<int>> rotateMatrix(int k, vector<vector<int>> mat) {
+        vector<vector<int>> ans = mat;
+        int row = mat.size(), col = mat[0].size();
+         k = k % col;
+         if(k > 0)
+         {
+             while(k--)
+             {
+                 for(int i = 0; i < row; i++)
+                 {
+                     int a = ans[i][0];
+                     ans[i].erase(ans[i].begin());
+                     ans[i].push_back(a);
+                 }
+             }
+         }
+         return ans;
+    }
+};
+// ********************************************************************************Coverage of All Zeros in a Binary Matrix(26/06)
+class Solution {
+  public:
+    int findCoverage(vector<vector<int>>& matrix) {
+        int ans = 0, n = matrix.size(), m = matrix[0].size();
+        vector<int>row = {-1, 1, 0, 0};
+        vector<int>col = {0, 0, -1, 1};
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(matrix[i][j] == 0){
+                    for(int x = 0; x < 4; x++){
+                        int nrow = i + row[x], ncol = j + col[x];
+                        if(nrow >= 0 && nrow<n && ncol >= 0 && ncol < m && matrix[nrow][ncol] == 1){
+                            ans++;
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
