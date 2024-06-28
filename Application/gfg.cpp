@@ -1712,7 +1712,9 @@ class Solution {
     }
 };
 // ********************************************************************************Toeplitz Matrix(27/06)
-bool isToepliz(vector<vector<int>>& mat) {
+class Solution {
+    public:
+    bool isToepliz(vector<vector<int>>& mat) {
     int n = mat.size();
     int m = mat[0].size();
     for(int i = 1; i < n; i++){
@@ -1723,4 +1725,27 @@ bool isToepliz(vector<vector<int>>& mat) {
         }
     }
     return true;
+  }
+}
+// ***********************************************************************************The Palindrome Pattern(28/06)
+class Solution {
+    public:
+string pattern(vector<vector<int>> &arr) {
+        int n = arr.size();
+        for(int i=0;i<n;i++){
+            int l=0,r=n-1;
+            while(l<=r && arr[i][l]==arr[i][r]){
+                l++;r--;
+            }
+            if(l>r)return to_string(i)+" R";
+        }
+        for(int i=0;i<n;i++){
+            int l=0,r=n-1;
+            while(l<=r && arr[l][i]==arr[r][i]){
+                l++;r--;
+            }
+            if(l>r)return to_string(i)+" C";
+        }
+        return "-1";
+    }
 }
