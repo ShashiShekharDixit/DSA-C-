@@ -1672,3 +1672,25 @@ public:
         return -1;
     }
 };
+// ********************************************************************************01/07(Three Consecutive Odds)
+void convert(Node *head, TreeNode *&root) {
+    if( head == nullptr) {
+        root = nullptr;
+        return;
+    }
+    root = new TreeNode(head -> data);
+    queue<TreeNode*> q;
+    q.push(root);
+    head = head -> next;
+    while(head){
+        TreeNode* current = q.front();
+        q.pop();
+        current -> left = new TreeNode(head -> data);
+        q.push(current -> left);
+        head = head -> next;
+        if(head == nullptr) break;
+        current -> right = new TreeNode(head -> data);
+        q.push(current -> right);
+        head = head -> next;
+    }
+}
