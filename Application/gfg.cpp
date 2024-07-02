@@ -1799,3 +1799,24 @@ void convert(Node *head, TreeNode *&root) {
         head = head -> next;
     }
 }
+// ***********************************************************************************Linked List a string form a Palindrome(02/07)
+class Solution {
+  public:
+    bool compute(Node* head) {
+        string s = "";
+        Node* curr = head;
+        while(curr !=NULL){
+            s += curr -> data;
+            curr = curr -> next;
+        }
+        int i = 0, j = s.size()-1;
+        while(i <= j){
+            if(s[i] != s[j]){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}; 
