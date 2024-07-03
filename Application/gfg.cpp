@@ -1820,3 +1820,26 @@ class Solution {
         return true;
     }
 }; 
+// **********************************************************************************Remove all Occurence of duplicate in a Linked List(03/07)
+class Solution {
+  public:
+    Node* removeAllDuplicates(struct Node* head) {
+        map<int, int> m;
+        Node* run = head;
+        while(run) {
+            m[run -> data]++;
+            run = run -> next;
+        }
+        Node* dummy = new Node(0);
+        dummy -> next = nullptr;
+        Node* temp = dummy;
+        for(const auto& pair : m){
+            if( pair.second == 1){
+                Node* newNode = new Node(pair.first);
+                temp -> next = newNode;
+                temp = newNode;
+            }
+        }
+        return dummy -> next;
+    }
+};
