@@ -1731,3 +1731,26 @@ public:
         return minVal;
     }
 };
+// ******************************************************************************04/07(Merge Node in Between two Zeroes)
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode dummy(0);
+        ListNode* tail = &dummy;        
+        ListNode* current = head->next; 
+        int sum = 0;
+        while (current != nullptr) {
+            if (current->val == 0) {
+                if (sum != 0) {
+                    tail->next = new ListNode(sum);
+                    tail = tail->next;
+                    sum = 0; 
+                }
+            } else {
+                sum += current->val;
+            }
+            current = current->next;
+        }
+        return dummy.next; 
+    }
+};
