@@ -1867,3 +1867,29 @@ vector<Node*> printAllDups(Node* root)
     solve(root);
     return ans;
 }
+// ******************************************************************************************Vertical Width of a Binary Tree(05/07)
+class Solution {
+  public:
+    int verticalWidth(Node* root) {
+        if(root == NULL) return 0;
+        int mini = 1e9 + 7;
+        int maxi = -1e9 + 7;
+        queue<pair<Node*, int>> q;
+        q.push({root, 0});
+        while(!q.empty()){
+            auto it = q.front();
+            q.pop();
+            Node* node = it.first;
+            int x = it.second;
+            mini = min(mini, x);
+            maxi = max(maxi, x);
+            if(node -> left) {
+                q.push({node -> left, x - 1});
+            }
+            if(node -> right){
+                q.push({node -> right, x + 1});
+            }
+        }
+        return abs(mini) + abs(maxi) + 1;
+    }
+}; 
