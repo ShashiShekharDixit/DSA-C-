@@ -1893,3 +1893,18 @@ class Solution {
         return abs(mini) + abs(maxi) + 1;
     }
 }; 
+// **************************************************************************************Populate Inorder Successor for all Nodes(06/07)
+class Solution {
+  public:
+    vector<Node *> populateNext(Node *root) {
+        if(!root)
+            return {NULL, NULL};
+        vector<Node *> l = populateNext(root->left);
+        vector<Node *> r = populateNext(root->right);
+        if(l[1])
+            l[1]->next = root;
+        if(r[0])
+            root->next = r[0];
+        return {l[0] ? l[0] : root, r[1] ? r[1] : root};
+    }
+};
