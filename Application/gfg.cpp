@@ -1908,3 +1908,25 @@ class Solution {
         return {l[0] ? l[0] : root, r[1] ? r[1] : root};
     }
 };
+// ****************************************************************************************Ancestors in Binary Tree(07/07)
+class Solution {
+  public:
+    vector<int>ans;
+    vector<int> Ancestors(struct Node *root, int target) {
+        vector<int>left;
+        vector<int>right;
+        if(root -> data == target){
+            reverse(ans.begin(),ans.end());
+            return ans;
+        }
+        ans.push_back(root -> data);
+        if(root -> left){
+            left = Ancestors(root -> left, target);
+        }
+        if(root -> right){
+            right = Ancestors(root -> right, target);
+        }
+        ans.pop_back();
+        return left.size() > right.size()?left:right;
+    }
+};
