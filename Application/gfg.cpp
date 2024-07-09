@@ -1965,3 +1965,39 @@ class Solution {
         return -1;
     }
 };
+// ******************************************************************************************Closest Three Sum(09/07)
+class Solution {
+  public:
+    int threeSumClosest(vector<int> arr, int target) {
+        sort(arr.begin(), arr.end());
+        int n = arr.size();
+        int ans = INT_MAX;
+        int res;
+        int anssum;
+        for(int i = 0; i < n; i++){
+            int l = i + 1;
+            int h = n - 1;
+            while(l < h){
+                int sum = arr[i] + arr[l] + arr[h];
+                if(sum > target){
+                    h--;
+                }
+                else if(sum < target){
+                    l++;
+                }
+                else {
+                    return sum;
+                }
+                res = abs(sum - target);
+                if(res < ans){
+                    ans = res;
+                    anssum = sum;
+                }
+                if(res == ans){
+                    anssum = max(anssum,sum);
+                }
+            }
+        }
+        return anssum;
+    }
+};
