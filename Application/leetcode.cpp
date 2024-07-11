@@ -1857,3 +1857,44 @@ public:
         return paths_stack.size();
     }
 };
+// ******************************************************************************11/07(Reverse Substrings Between Each Pair of Parentheses)
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        stack<string> st;
+        string curr="";
+
+        int n=s.size();
+        for(int i=0;i<n;i++){
+            if(s[i]=='('){
+                if(curr.size()>0){
+                    st.push(curr);
+                    curr="";
+                }
+                st.push("(");
+            }
+            else if(s[i]==')'){
+                st.push(curr);
+                curr="";
+                string temp="";
+                while(!st.empty() && st.top()!="("){
+                    string t=st.top();
+                    st.pop();
+                    reverse(t.begin(), t.end());
+                    temp=temp+t;
+                }
+                st.pop();
+                st.push(temp);
+            }
+            else{
+                curr+=s[i];
+            }
+        }
+        string ans="";
+        while(!st.empty()){
+            ans=st.top()+ans;
+            st.pop();
+        }
+        return ans+curr;
+    }
+};
