@@ -2160,3 +2160,22 @@ class Solution {
         }
     }
 };
+// ***************************************************************************************Smallest Number(15/07)
+class Solution {
+  public:
+        int sum(int n){
+            int s = 0;
+            while(n){
+                s += n%10;
+                n/=10;
+            }
+            return s;
+        }
+        string smallestNumber(int s, int d){
+         for(int i = pow(10, d-1);
+         i<=pow(10, d) -1; i++){
+             if(sum(i) == s) return to_string(i);
+         }   
+         return "-1";
+        }
+};
