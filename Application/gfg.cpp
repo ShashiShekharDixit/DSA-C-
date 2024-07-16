@@ -2179,3 +2179,19 @@ class Solution {
          return "-1";
         }
 };
+// ****************************************************************************************Remaining String(16/07)
+class Solution {
+  public:
+    string printString(string s, char ch, int count) {
+        string ans = "";
+        for(int i = 0; i < s.length(); i++){
+            if(s[i] == ch)
+            count--;
+            if(count == 0){
+                ans = s.substr( i + 1);
+                break;
+            }
+        }
+        return ans;
+    }
+};
