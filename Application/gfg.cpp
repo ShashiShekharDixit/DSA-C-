@@ -2291,3 +2291,25 @@ class Solution
             return ans;
     }
 };
+// *******************************************************************************************RemovalHalfNode(20/07)
+class Solution {
+  public:
+    void solve(Node* &root){
+        if(root){
+             solve(root->left); 
+            solve(root->right); 
+            
+            if(root->left != NULL && root->right == NULL||root->left == NULL && root->right != NULL){
+             root = root->left?root->left:root->right; 
+             
+            }
+            
+           
+        }
+    }
+    Node *RemoveHalfNodes(Node *root) {
+        solve(root); 
+        
+        return root ; 
+    }
+};
