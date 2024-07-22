@@ -2338,4 +2338,26 @@ class Solution {
         if(prod == 1 && flag == 1) return 0;
         return prod;
     }
+}; 
+// *****************************************************************************************Largest BST(22/07)
+class Solution{
+    public:
+    int countNodes(Node* node)
+    {
+        if(node == NULL) return 0;
+        return 1 + countNodes(node -> left) + countNodes(node -> right);
+    }
+    bool isBST(Node* node, int min, int max)
+    {
+        if(node == NULL) return true;
+        if(node -> data < min || node -> data > max) return false;
+        return isBST(node -> left, min, node -> data - 1) && isBST(node -> right, node -> data + 1, max);
+    }
+    int largestBst(Node *root)
+    {
+    	if(isBST(root, INT_MIN, INT_MAX)) return countNodes(root);
+    	int left = largestBst(root -> left);
+    	int right = largestBst(root -> right);
+    	return max(left, right);
+    }
 };
