@@ -2379,3 +2379,24 @@ class Solution {
         return arr;
     }
 };
+// *******************************************************************************************Check BST(24/07)
+class Solution
+{
+    public:
+    Node* prevv = NULL;
+    bool isBST(Node* root) 
+    {
+        if(root == NULL){
+            return true;
+        }
+        if(isBST(root->left)== false){
+            return false;
+        }
+        if(prevv!= NULL && root-> data<=prevv-> data){
+            return false;
+        }
+        prevv = root;
+        return isBST(root-> right);
+    }
+};
+
