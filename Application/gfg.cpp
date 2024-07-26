@@ -2417,3 +2417,14 @@ class Solution {
         return solve(nums, s, e);
     }
 };
+// ***********************************************************************************************K-Pangram(26/07)
+class Solution {
+  public:
+    bool kPangram(string str, int k) {
+        unordered_map<char, int>cnt;
+        for(char c : str) if(isalpha(c)) cnt[c]++;
+        int req = 26 - cnt.size(), changable = 0;
+        for(auto i : cnt) changable += i.second - 1;
+        return k >= req && changable >= req;
+    }
+};
