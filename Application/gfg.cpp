@@ -2453,3 +2453,16 @@ public:
         return dp[i][j] =max(tk,skp);
     }
 };
+// **********************************************************************************************Remove Duplicate(28/07)
+class Solution {
+  public:
+    string removeDups(string str) {
+        string ans = "";
+        int cnt[26] = {0};
+        for(int i = 0; i < str.size(); i++) {
+            if(cnt[str[i] - 'a'] == 0) ans += str[i];
+            cnt[str[i] - 'a']++;
+        }
+        return ans;
+    }
+};
