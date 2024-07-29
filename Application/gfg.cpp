@@ -2466,3 +2466,23 @@ class Solution {
         return ans;
     }
 };
+// ************************************************************************************************Row with Max 1's(29/07)
+class Solution {
+  public:
+    int rowWithMax1s(vector<vector<int> > &arr) {
+        int currColumn = arr[0].size() - 1, currRow = 0, ans = -1;
+        while(currColumn >= 0 and currRow < arr.size()){
+            while(currColumn >= 0 and arr[currRow][currColumn] == 1){
+                ans = currRow;
+                currColumn--;
+            }
+            if(currColumn < 0){
+                return currRow;
+            }
+            else {
+                currRow++;
+            }
+        }
+        return ans;
+    }
+};
