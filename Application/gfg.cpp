@@ -2486,3 +2486,29 @@ class Solution {
         return ans;
     }
 };
+// **************************************************************************************Rat in a Maze I(30/07)
+class Solution {
+  public:
+    void solve(vector<vector<int>>&mat , vector<string>&ans , string s , int n , int m ,int i , int j,
+    vector<vector<int>>&vis){
+        if ( i < 0 || j < 0 || i == n || j == m || mat[i][j] == 0 || vis[i][j] == 1) return;
+        if (i == n-1 and j == m-1) {ans.push_back(s);return;}
+        vis[i][j] = 1;
+        solve(mat,ans,s+"R",n,m,i,j+1,vis);
+        solve(mat,ans,s+"D",n,m,i+1,j,vis);
+        solve(mat,ans,s+"L",n,m,i,j-1,vis);
+        solve(mat,ans,s+"U",n,m,i-1,j,vis);
+        vis[i][j] = 0;
+        return;        
+    }
+    vector<string> findPath(vector<vector<int>> &mat) {
+        vector<string>ans;
+        string s = "";
+        int n = mat.size();
+        int m = mat[0].size();
+        vector<vector<int>>vis(n,vector<int>(n,0));
+        solve(mat,ans,s,n,m,0,0,vis);
+        sort(ans.begin(),ans.end());
+        return ans;      
+    }
+};
