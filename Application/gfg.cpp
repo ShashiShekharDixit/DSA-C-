@@ -2512,3 +2512,20 @@ class Solution {
         return ans;      
     }
 };
+// **************************************************************************************Longest Common Prefix of String(31/07)
+class Solution {
+  public:
+    string longestCommonPrefix(vector<string> arr) {
+        string ans = arr[0];
+        for(int i = 0; i < arr.size(); i++){
+            string temp = "";
+            for(int j = 0; j < min(arr[i].size(), ans.size()); j++){
+                if(arr[i][j] == ans[j]) temp += ans[j];
+                else break;
+            }
+            ans = temp;
+        }
+        if(ans.size() != 0) return ans;
+        else return "-1";
+    }
+};
