@@ -2577,7 +2577,7 @@ public:
         return f[n];
     }
 };
-// ******************************************************************************************Number of Senior Citizen(01/07)
+// ******************************************************************************************Number of Senior Citizen(01/08)
 class Solution {
 public:
     int countSeniors(vector<string>& details) {
@@ -2587,5 +2587,20 @@ public:
             ans += age > 60;
         }
         return ans;
+    }
+};
+// *********************************************************************************************Minimum Count Good in Binary Tree(02/08)
+class Solution {
+public:
+    int minSwaps(vector<int>& nums) {
+        int k = accumulate(nums.begin(), nums.end(), 0);
+        int n = nums.size();
+        int cnt = accumulate(nums.begin(), nums.begin() + k, 0);
+        int mx = cnt;
+        for (int i = k; i < n + k; ++i) {
+            cnt += nums[i % n] - nums[(i - k + n) % n];
+            mx = max(mx, cnt);
+        }
+        return k - mx;
     }
 };
