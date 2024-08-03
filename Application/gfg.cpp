@@ -2589,3 +2589,24 @@ class Solution {
         return ans(str1,str2,n-1,m-1,v);
     }
 };
+// *************************************************************************************The Celebrity Problem(03/08)
+class Solution {
+  public:
+    int celebrity(vector<vector<int> >& mat) {
+        int n=mat.size();
+        vector<pair<int,int>>v(n);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(mat[i][j]==1){
+                    v[i].first++;
+                    v[j].second++;
+                }
+            }
+        }
+        int ans=-1;
+        for(int i=0;i<n;i++){
+            if(v[i].first==0 && v[i].second==n-1) ans=i;
+        }
+        return ans;
+    }
+};
