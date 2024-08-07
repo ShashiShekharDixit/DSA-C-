@@ -2687,3 +2687,30 @@ class Solution {
         return true;
     }
 };
+// **************************************************************************************Kth element of two Arrays(07/08)
+class Solution {
+  public:
+    int kthElement(int k, vector<int>& arr1, vector<int>& arr2){
+        int i=0,j=0;
+        int n1=arr1.size(),n2=arr2.size();
+        vector<int> arr;
+        while(i<n1 && j<n2){
+            if(arr1[i]>=arr2[j]){
+                arr.push_back(arr2[j++]);
+            }
+            else {
+                arr.push_back(arr1[i++]);
+            }
+        }
+        
+        while(i<n1){
+             arr.push_back(arr1[i++]);
+        }
+        
+        while(j<n2){
+             arr.push_back(arr2[j++]);
+        }
+        
+        return arr[k-1];
+    }  
+};
