@@ -2702,15 +2702,31 @@ class Solution {
                 arr.push_back(arr1[i++]);
             }
         }
-        
         while(i<n1){
              arr.push_back(arr1[i++]);
         }
-        
         while(j<n2){
              arr.push_back(arr2[j++]);
         }
-        
         return arr[k-1];
     }  
+};
+// *********************************************************************************Sum Tree(08/08)
+class Solution {
+  public:
+    int ans(Node* root){
+        if(root == NULL){
+            return 0;
+        } else {
+            int left = ans(root -> left);
+            int right = ans(root -> right);
+            return left + right + root -> data;
+        }
+    }
+    bool isSumTree(Node* root) {
+        if(root -> left == NULL && root -> right == NULL) return true;
+        int sum = ans(root);
+        if(sum - root -> data == root -> data) return true;
+        return false;
+    }
 };
