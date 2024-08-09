@@ -2730,3 +2730,17 @@ class Solution {
         return false;
     }
 };
+// ***********************************************************************************Maximize Array Value After Rearrangement(09/08)
+class Solution {
+  public:
+    int Maximize(vector<int> arr) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+        long long result = 0;
+        int mod = 1e9 + 7;
+        for(int i = 0; i < n; i++){
+            result = (result + (long long) arr[i] * i) % mod;
+        }
+        return result;
+    }
+};
