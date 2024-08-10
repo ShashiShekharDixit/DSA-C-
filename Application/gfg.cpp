@@ -2744,3 +2744,24 @@ class Solution {
         return result;
     }
 };
+// ************************************************************************************Rotate a Linked List(10/08)
+class Solution {
+  public:
+    Node* rotate(Node* head, int k) {
+        vector<int>vec;
+        Node* curr = head;
+        while(curr != NULL){
+            vec.push_back(curr -> data);
+            curr = curr -> next;
+        }
+        reverse(vec.begin(), vec.begin() + k);
+        reverse(vec.begin() + k, vec.end());
+        reverse(vec.begin(), vec.end());
+        curr = head;
+        for(int i = 0; i < vec.size(); i++){
+            curr -> data = vec[i];
+            curr = curr -> next;
+        }
+        return head;
+    }
+};
