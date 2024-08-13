@@ -2821,3 +2821,17 @@ class Solution {
         return mid1 + mid2;
     }
 };
+// ****************************************************************************************Square Root of a Number(13/08)
+class Solution {
+  public:
+    long long int floorSqrt(long long int n) {
+        if(n == 1){
+            return 1;
+        }
+        long long int ans = 0;
+        for(int i = 1;i * i <= n; i++){
+            ans++;
+        }
+        return ans;
+    }
+};
