@@ -2835,3 +2835,21 @@ class Solution {
         return ans;
     }
 };
+// ******************************************************************************************Longest Common Substring(14/08)
+class Solution {
+  public:
+    int longestCommonSubstr(string str1, string str2) {
+        int maxLen = 0;
+        int n = str1.size();
+        int m = str2.size();
+        for(int i = 0; i < n; i++){
+            for(int j = i; j < n; j++){
+                string substr = str1.substr(i,j - i + 1);
+                if(str2.find(substr) != string::npos){
+                    maxLen = max(maxLen, j - i + 1);
+                }
+            }
+        }
+        return maxLen;
+    }
+};
