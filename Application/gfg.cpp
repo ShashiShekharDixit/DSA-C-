@@ -2853,3 +2853,49 @@ class Solution {
         return maxLen;
     }
 };
+// ********************************************************************************************Add 1 To A Linked List(15/08)
+class Solution
+{
+    public:
+    Node* reverse(Node* head){
+        Node* prev=NULL;
+        Node* curr=head;
+        Node* after;
+        while(curr!=NULL){
+            after=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=after;
+         
+        }
+        
+        return prev;
+    }
+    Node* addOne(Node *head) 
+    {
+        head=reverse(head);
+        Node* temp=head;
+        Node* last=head;
+        int carry=1;
+        while(temp!=NULL){
+            
+             int n=temp->data;
+            temp->data=temp->data+carry;
+           if(n==9)
+            carry=1;
+            else
+            break;
+           
+            temp=temp->next;
+        }
+       while(last->next!=NULL){
+            last=last->next;
+        }
+        int number=last->data;
+        if(number==10){
+        int r=1;
+       last->next=new Node(1);
+        }
+        return reverse(head);
+    }
+};
