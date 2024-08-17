@@ -2929,3 +2929,34 @@ class Solution
         return result < 0 ? 0 : result;
     }
 }; 
+// ************************************************************************************Product Array Puzzle(17/08)
+class Solution {
+  public:
+    vector<long long int> productExceptSelf(vector<long long int>& nums) {
+        long long x = 1;
+        int zeroes = 0;
+        for(long long i : nums)
+        {
+            if(i != 0)
+            x *= i;
+            else 
+            zeroes++;
+        }
+        if(zeroes > 1) x = 0;
+        for(int i = 0; i < nums.size(); i++)
+        {
+            if(zeroes)
+            {
+                if(nums[i])
+                nums[i] = 0;
+                else 
+                nums[i] = x;
+            }
+            else 
+            {
+                nums[i] = (x / nums[i]);
+            }
+        }
+        return nums;
+    }
+};
