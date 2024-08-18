@@ -2960,3 +2960,20 @@ class Solution {
         return nums;
     }
 };
+// **********************************************************************************Split the array into two equal sum Subarrays(18/08)
+class Solution {
+  public:
+    bool canSplit(vector<int>& arr) {
+        int n = arr.size();
+        int lSum = accumulate(arr.begin(), arr.end(), 0);
+        int rSum = 0;
+        for(int i = n - 1; i >= 0; i--){
+            rSum += arr[i];
+            lSum -= arr[i];
+            if(lSum == rSum){
+                return true;
+            }
+        }
+        return false;
+    }
+}; 
