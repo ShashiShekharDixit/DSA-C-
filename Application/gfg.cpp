@@ -2977,3 +2977,15 @@ class Solution {
         return false;
     }
 }; 
+// **************************************************************************************Kth Smallest(19/08)
+class Solution {
+  public:
+    int kthSmallest(vector<int> &arr, int k) {
+        priority_queue<int>q;
+        for(int i = 0; i < k; i++) q.push(arr[i]);
+        for(int i = k; i < arr.size(); i++)
+        if(arr[i] < q.top())
+        q.pop(), q.push(arr[i]);
+        return q.top();
+    }
+};
