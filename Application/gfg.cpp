@@ -3127,30 +3127,74 @@ vector<int> leftView(Node *root)
 class Solution {
     public:
   vector<vector<int>> memo;
-
     int knapsackhelper(int index, int W, vector<int>& wt, vector<int>& val) {
         if (index == 0 ) {
             return 0;
         }
-
         if (memo[index][W] != -1) {
             return memo[index][W];
         }
-
         int ans = 0;
         if (wt[index - 1] <= W) {
             ans += val[index - 1] + knapsackhelper(index - 1, W - wt[index - 1], wt, val);
             } 
             ans = max(ans,knapsackhelper(index - 1, W, wt, val));
-    
-
         memo[index][W] = ans;
         return ans;
     }
-
     int knapSack(int W, vector<int>& wt, vector<int>& val) {
         int n = val.size();
         memo.resize(n + 1, vector<int>(W + 1, -1));
         return knapsackhelper(n, W, wt, val);
+    }
+};
+// ********************************************************************************Number of Pair(25/08)
+class Solution {
+    public:
+    int binarySearch(int key, vector<int>&brr){
+      int low=0;
+      int high=brr.size()-1;
+      int idx=-1;
+      while(low<=high){
+          int mid=(low+high)/2;
+          if(brr[mid]<=key){
+              idx=mid;
+              low=mid+1;
+          }
+          else{
+          high=mid-1;
+      }
+      }
+      return idx;
+  }
+    long long countPairs(vector<int> &arr, vector<int> &brr) {
+        long long ans=0;
+        long long one=0;
+        long long two=0;
+        long long threefour=0;
+        sort(brr.begin(),brr.end());
+        
+        for(auto x:brr){
+            if(x==1) one++;
+            else if(x==2) two++;
+            else if(x==3 || x==4) threefour++;
+        }
+        
+        for(auto x:arr){
+            if(x!=1) {
+                ans=ans+one;
+            
+            if(x==2){
+                ans=ans-threefour;
+            }
+            if(x==3){
+                ans=ans+two;
+            }
+            int index=binarySearch(x,brr);
+            ans=ans+(brr.size()-index-1);
+        }
+        
+     }
+        return ans;
     }
 };
