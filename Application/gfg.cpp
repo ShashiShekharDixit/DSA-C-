@@ -3198,3 +3198,36 @@ class Solution {
         return ans;
     }
 };
+// ***************************************************************************************************WildCard Pattern Matching(26/08)
+Class Solution(){
+ public:
+  int Solve(string &ptr,string &str,vector<vector<int>>&dp,int i,int j){
+      if(i>=ptr.size() && j>=str.size())
+      return 1;
+      if(i>=ptr.size() && j<str.size())
+      return 0;
+      if(i<ptr.size() && j>=str.size()){
+          for(int k=ptr.size()-1;k>=i;k--){
+              if(ptr[k]!='*'){
+                  return 0;
+              }
+          }
+          return 1;
+      }
+      if(dp[i][j]!=-1)
+      return dp[i][j];
+      int ans=0;
+      if(ptr[i]==str[j] || ptr[i]=='?')
+      ans=Solve(ptr,str,dp,i+1,j+1);
+      else if(ptr[i]=='*')
+          ans=Solve(ptr,str,dp,i+1,j) || Solve(ptr,str,dp,i,j+1);
+    
+      return dp[i][j]=ans;
+  }
+    int wildCard(string pattern, string str) {
+        int n=pattern.size();
+        int m=str.size();
+        vector<vector<int>>dp(n,vector<int>(m,-1));
+        return Solve(pattern,str,dp,0,0);
+    }
+};

@@ -3262,3 +3262,15 @@ public:
         return num;
     }
 };
+// *****************************************************************************N-ary Tree PostOrder Traversal(26/08)
+class Solution {
+public:
+    vector<int> ans;
+    vector<int> postorder(Node* root) {
+        if(!root) return ans;
+        for(auto& child: root -> children)
+        postorder(child);
+        ans.push_back(root -> val);
+        return ans;
+    }
+}; 
