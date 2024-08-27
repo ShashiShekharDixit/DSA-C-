@@ -3231,3 +3231,37 @@ Class Solution(){
         return Solve(pattern,str,dp,0,0);
     }
 };
+// ************************************************************************Maximum Difference(27/08)
+Class Solution(){
+ public:
+    int findMaxDiff(vector<int> &arr) {
+    int n = arr.size();
+        vector<int> leftarr(n, 0);
+        vector<int> rightarr(n, 0);
+        stack<int> s;
+        for (int i = 0; i < n; i++) {
+            while (!s.empty() && s.top() >= arr[i]) {
+                s.pop();
+            }
+            if (!s.empty()) {
+                leftarr[i] = s.top();
+            }
+            s.push(arr[i]);
+        }
+        while (!s.empty()) s.pop();  
+        for (int i = n - 1; i >= 0; i--) {
+            while (!s.empty() && s.top() >= arr[i]) {
+                s.pop();
+            }
+            if (!s.empty()) {
+                rightarr[i] = s.top();
+            }
+            s.push(arr[i]);
+        }
+        int maxDiff = 0;
+        for (int i = 0; i < n; i++) {
+            maxDiff = max(maxDiff, abs(leftarr[i] - rightarr[i]));
+        }
+        return maxDiff;
+    }
+};
