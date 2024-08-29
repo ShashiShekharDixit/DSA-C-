@@ -3291,3 +3291,25 @@ class Solution {
         return ans;
     }
 };
+// ****************************************************************************(29/08)Find length of loop
+class Solution {
+  public:
+    int countNodesinLoop(Node *head) {
+        if(!head || !(head -> next)) return 0;
+        Node* slow = head, *fast = head;
+        while(fast && fast -> next){
+            slow = slow -> next;
+            fast = fast -> next -> next;
+            if(slow == fast){
+                int cnt = 1;
+                slow = slow -> next;
+                while(slow != fast){
+                 slow = slow -> next;
+                 cnt++;
+                }
+                return cnt;
+            }
+        }
+        return 0;
+    }
+};
