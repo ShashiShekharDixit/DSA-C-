@@ -3414,3 +3414,25 @@ class Solution {
         
     }
 };
+// ********************************************************************************Kadane's Algorithm(06/09)
+class Solution {
+  public:
+    int maxSubarraySum(vector<int> &arr) {
+        int n =arr.size();
+        int maxi =INT_MIN;
+        vector<int> dp(n+1);
+        dp[0] =0;
+        for(int i =1;i<=n;i++){
+            maxi=max(maxi,arr[i-1]);
+            if(dp[i -1] +arr[i-1]>=0){
+                dp[i] =dp[i -1] +arr[i -1];
+            }else{
+                dp[i] =0;
+            }
+        }
+        if(maxi <= 0){
+            return maxi;
+        }
+        return *max_element(dp.begin(),dp.end());
+    }
+};
