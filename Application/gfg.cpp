@@ -3436,3 +3436,15 @@ class Solution {
         return *max_element(dp.begin(),dp.end());
     }
 };
+// ********************************************************************************Nth Natural Number(07/09)
+class Solution {
+  public:
+    long long findNth(long long n) {
+        string result;
+        while(n > 0){
+            result = to_string(n % 9) + result;
+            n = n / 9;
+        }
+        return stol(result);
+    }
+};
