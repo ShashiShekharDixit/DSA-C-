@@ -3481,3 +3481,14 @@ int minJumps(vector<int>& arr) {
         return -1; 
     }
 };
+// ***************************************************************************************Mirror Tree(13/09)
+class Solution {
+  public:
+    void mirror(Node* node) {
+        if(node == NULL)
+        return;
+        swap(node ->left, node ->right);
+        mirror(node ->left);
+        mirror(node ->right);
+    }
+};
