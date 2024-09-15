@@ -3509,3 +3509,27 @@ class Solution {
         }
     }
 };
+// ****************************************************************************************Binary Tree In DLL(15/09)
+class Solution
+{
+    public: 
+  Node * bToDLL(Node *root)
+    {
+        if(!root ||(!root->left && !root->right))   return root;
+        Node* newRight = bToDLL(root->right);
+        if(newRight)    newRight->left = root;
+        root->right = newRight;
+        Node* newLeft = bToDLL(root->left);
+        Node* temp = newLeft; 
+        if(!temp){
+            root->left = temp;
+            return root;
+        }
+        while(temp->right){
+            temp = temp->right;
+        }
+        temp->right = root;
+        root->left = temp;       
+        return newLeft;
+    }
+};
