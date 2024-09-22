@@ -19,10 +19,34 @@ Each problem is solved and documented in its respective folder (LeetCode or GFG)
 ## Platforms
 
 ### [LeetCode](https://leetcode.com/u/ShashiSDixit20/)
-LeetCode is a popular platform for coding challenges, offering a wide range of DSA problems from beginner to advanced levels. 
+Here is my LeetCode Profile:
+https://leetcode.com/u/ShashiSDixit20/
+
+Welcome to my LeetCode profile! I'm a passionate problem solver with a keen interest in algorithms and data structures. My journey on LeetCode has helped me strengthen my understanding of:
+
+*Core DSA Concepts: Arrays, Linked Lists, Stacks, Queues, Trees, Graphs, Dynamic Programming, etc.
+*Algorithmic Techniques: Sorting, Searching, Greedy Algorithms, Divide and Conquer, Backtracking, and more.
 
 ### [GeeksforGeeks (GFG)](https://www.geeksforgeeks.org/user/shashisdixit80/)
-GFG is a comprehensive platform for learning and practicing coding and DSA topics, providing a variety of problems along with detailed tutorials.
+Here is my GFG Profile:
+https://www.geeksforgeeks.org/user/shashisdixit80/
+
+Welcome to my GeeksforGeeks profile! I’m deeply passionate about Data Structures and Algorithms (DSA) and use this platform to strengthen my foundational knowledge while solving a variety of coding challenges.
+
+Achievements:
+Solved over X problems across multiple topics including Arrays, Linked Lists, Trees, Graphs, Dynamic Programming, and more.
+Actively participated in GFG practice series to continuously improve problem-solving techniques.
+Earned X badges in topics like Algorithms, DSA, and System Design for consistent performance.
+Completed various GFG Courses to deepen my understanding of key programming concepts.
+Areas of Expertise:
+Data Structures: Mastery over arrays, stacks, queues, linked lists, and binary trees.
+Algorithmic Problem Solving: Strong knowledge in sorting, searching, dynamic programming, and greedy algorithms.
+Coding Efficiency: Focused on writing optimized code with better time and space complexities.
+Learning Goals:
+Master Advanced Topics: Delving deeper into Graph Theory, Segment Trees, and Dynamic Programming.
+Competitive Coding: Aiming to improve my skills and rankings in GFG Competitions and Coding Challenges.
+System Design: Exploring the intricacies of system architecture to build scalable and efficient solutions.
+I believe GFG is a great platform for both learning and sharing knowledge. Let’s connect and grow together as we take on new challenges in the world of algorithms and development!
 
 ## How to Use This Repository
 
