@@ -18,10 +18,10 @@ Each problem is solved and documented in its respective folder (LeetCode or GFG)
 
 ## Platforms
 
-### [LeetCode](https://leetcode.com/)
+### [LeetCode](https://leetcode.com/u/ShashiSDixit20/)
 LeetCode is a popular platform for coding challenges, offering a wide range of DSA problems from beginner to advanced levels. 
 
-### [GeeksforGeeks (GFG)](https://www.geeksforgeeks.org/)
+### [GeeksforGeeks (GFG)](https://www.geeksforgeeks.org/user/shashisdixit80/)
 GFG is a comprehensive platform for learning and practicing coding and DSA topics, providing a variety of problems along with detailed tutorials.
 
 ## How to Use This Repository
