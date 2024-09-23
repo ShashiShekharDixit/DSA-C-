@@ -3600,7 +3600,7 @@ class Solution {
         return kmp[n - 1];
     }
 };
-// ****************************************************************************************Missing and Repeating(23/09)
+// ****************************************************************************************************Missing and Repeating(23/09)
 class Solution {
   public:
     vector<int> findTwoElement(vector<int>& arr)  {
