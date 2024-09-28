@@ -3641,3 +3641,19 @@ class Solution {
         return ans;
     }
 };
+// **************************************************************************************************Minimal Cost(28/09)
+class Solution {
+  public:
+    int minimizeCost(int k, vector<int>& arr) {
+        vector<int> ans(arr.size(), INT_MAX);
+        ans[arr.size() - 1] = 0;
+        
+        for(int i = arr.size() - 2; i >= 0; i--) {
+            for(int j = 1; j <= k; j++) {
+                if(i + j >= arr.size()) break;
+                ans[i] = min(ans[i], abs(arr[i] - arr[i + j]) + ans[i + j]);
+            }
+        }
+        return ans[0];
+    }
+};
