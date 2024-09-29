@@ -3657,3 +3657,18 @@ class Solution {
         return ans[0];
     }
 };
+// ****************************************************************************************************Total Count(29/09)
+class Solution {
+  public:
+    int totalCount(int k, vector<int>& arr) {
+        int cnt = 0;
+        for(auto x : arr){
+            if(x <= k) cnt++;
+            else if(x > k){
+                cnt += (x / k);
+                if(x % k) cnt++;
+            }
+        }
+        return cnt;
+    }
+};
