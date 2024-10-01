@@ -3672,7 +3672,7 @@ class Solution {
         return cnt;
     }
 };
-// ***********************************************************************************Merge two BST(29/09)
+// ***********************************************************************************Merge two BST(30/09)
 class Solution{
 public:
      void inorder(Node *root, vector<int> &arr){
@@ -3689,4 +3689,22 @@ public:
         sort(arr.begin(), arr.end());
         return arr;
     }
-}
+};
+// ************************************************************************************Multiply Two Linked List(01/10)
+class solution {
+  public:
+    long long multiplyTwoLists(Node *first, Node *second) {
+        unsigned long long l1 = 0, l2 = 0, mod = 1e9 + 7;
+        while(first){
+            l1 = (l1 * 10) % mod;
+            l1 += (first -> data) % mod;
+            first = first -> next;
+        }
+        while(second){
+            l2 = (l2 * 10) % mod;
+            l2 += (second -> data) % mod;
+            second = second -> next;
+        }
+        return (l1 * l2) % mod;
+    }
+};
