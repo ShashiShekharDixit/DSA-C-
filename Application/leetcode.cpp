@@ -3985,3 +3985,18 @@ public:
         return minLength == nums.size() ? -1 : minLength;
     }
 };
+// ***********************************************************************Divide Players into teams of equal skills(04/10)
+class Solution {
+public:
+    long long dividePlayers(vector<int>& skill) {
+        sort(skill.begin(), skill.end());
+        int n = skill.size();
+        int s = skill[0] + skill[n - 1];
+        long long ans = 0;
+        for (int i = 0, j = n - 1; i < j; ++i, --j) {
+            if (skill[i] + skill[j] != s) return -1;
+            ans += 1ll * skill[i] * skill[j];
+        }
+        return ans;
+    }
+};
