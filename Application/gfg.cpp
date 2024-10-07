@@ -3844,3 +3844,19 @@ public:
         return ans;
     }
 };
+// *****************************************************************************************XOR Linked List(07/10)
+struct Node *insert(struct Node *head, int data) {
+    Node *newNode = new Node(data);
+    if(head == NULL) return newNode;
+    newNode -> npx = head;
+    head = newNode;
+    return head;
+}
+vector<int> getList(struct Node *head) {
+    vector<int> v;
+    Node *temp = head;
+    while(temp){
+        v.push_back(temp -> data);
+        temp = temp -> npx;
+    }return v;
+}
