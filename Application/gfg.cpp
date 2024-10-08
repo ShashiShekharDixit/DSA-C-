@@ -3845,6 +3845,8 @@ public:
     }
 };
 // *****************************************************************************************XOR Linked List(07/10)
+class solution(){
+    public:
 struct Node *insert(struct Node *head, int data) {
     Node *newNode = new Node(data);
     if(head == NULL) return newNode;
@@ -3860,3 +3862,20 @@ vector<int> getList(struct Node *head) {
         temp = temp -> npx;
     }return v;
 }
+};
+// ********************************************************************************************Largest Pair Sum(08/10)
+class Solution {
+  public:
+    int pairsum(vector<int> &arr)  {
+        int maxi1=INT_MIN;
+        int maxi2=INT_MIN;
+        for(auto it:arr){
+            if(it>maxi1) maxi1=it;
+        }
+        for(auto it:arr){
+            if(it==maxi1) continue;
+            else if(it>maxi2) maxi2=it;
+        }
+        return maxi1+maxi2;
+    }
+};
