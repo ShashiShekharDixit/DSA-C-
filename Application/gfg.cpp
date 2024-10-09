@@ -3879,3 +3879,32 @@ class Solution {
         return maxi1+maxi2;
     }
 };
+// *********************************************************************************Linked List Matrix(09/10)
+class Solution {
+  public:
+    Node* constructLinkedMatrix(vector<vector<int>>& mat) {
+        Node* temp1 = new Node(0);
+        Node* temphead = temp1;
+        for(int i=0;i<mat.size()-1;i++){
+            Node* temp2 = new Node(0);
+            temp1->right = temp2;
+            temp1 = temp2;
+        }
+        Node* ptr = temphead;
+        for(int i=0;i<mat.size();i++){
+            Node* rowhead = new Node(mat[i][0]);
+            Node* temp4 = rowhead;
+            ptr->down = temp4;
+            ptr=ptr->right;
+            for(int j=1;j<mat.size();j++){
+                Node* temp3 = new Node(mat[i][j]);
+                temp4->right = temp3;
+                temp4 = temp3;
+                ptr->down=temp3;
+                ptr=ptr->right;
+            }
+            ptr = rowhead;
+        }
+        return temphead->down;
+    }
+};
