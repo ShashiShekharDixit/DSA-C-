@@ -3908,3 +3908,26 @@ class Solution {
         return temphead->down;
     }
 };
+// *******************************************************************************Max Distance Between same element(10/10)
+class Solution {
+  public:
+    int maxDistance(vector<int> &arr) {
+        unordered_map<int,pair<int,int>>mp;
+        for(int i=0;i<arr.size();i++){
+            int num = arr[i];
+            if(mp.find(num)==mp.end()){ 
+                mp[num] = {i,i};
+            }else{ 
+                mp[num] = {mp[num].first,i};
+            }
+        }
+        int maxi = INT_MIN;
+        for(auto& m : mp){
+            pair<int,int>value = m.second;
+            int start = value.first;
+            int end = value.second;
+            maxi = max(maxi,(end-start));
+        }
+        return maxi;      
+    }
+};

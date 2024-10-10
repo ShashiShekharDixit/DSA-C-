@@ -4060,7 +4060,7 @@ public:
         return start + end >= n2;
     }
 };
-// ********************************************************************************Minimum string Length after removing Substring(07/10)
+// ****************************************************************************Minimum string Length after removing Substring(07/10)
 class Solution {
 public:
     int minLength(string s) {
@@ -4084,7 +4084,7 @@ public:
         return stack.size();
     }
 };
-// *********************************************************************************Minimum number of Swap to make the stirng balanced(08/10)
+// *********************************************************************Minimum number of Swap to make the stirng balanced(08/10)
 class Solution {
 public:
     int minSwaps(string s) {
@@ -4100,7 +4100,7 @@ public:
         return (size + 1) / 2;
     }
 };
-// ***********************************************************************************Minimum Add to make Parenthesis Valid(09/10)
+// ******************************************************************************Minimum Add to make Parenthesis Valid(09/10)
 class Solution {
 public:
     int minAddToMakeValid(string s) {
@@ -4119,3 +4119,24 @@ public:
         return c + S.size();
     }
 };  
+// ********************************************************************************Maximum Width Ramp(10/10)
+class Solution {
+public:
+    int maxWidthRamp(vector<int>& nums) {
+        int n = nums.size();
+        stack<int> s;
+        for (int i = 0; i < n; ++i) {
+            if (s.empty() || nums[s.top()] > nums[i]) {
+                s.push(i);
+            }
+        }        
+        int maxWidth = 0;
+        for (int j = n - 1; j >= 0; --j) {
+            while (!s.empty() && nums[s.top()] <= nums[j]) {
+                maxWidth = max(maxWidth, j - s.top());
+                s.pop();
+            }
+        }
+        return maxWidth;
+    }
+};
