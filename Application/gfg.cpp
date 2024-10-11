@@ -3931,3 +3931,20 @@ class Solution {
         return maxi;      
     }
 };
+// *********************************************************************************Reorganize the Array(11/10)
+class Solution {
+  public:
+    vector<int> rearrange(const vector<int>& arr) {
+        int n = arr.size();
+        vector<int> v(n,-1);
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]>=0)
+            {
+                int k = arr[i];
+                v[k]=k;
+            }
+        }
+        return v;     
+    }
+};
