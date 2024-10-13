@@ -3965,3 +3965,17 @@ class Solution {
         return maxi;
     }
 };
+// ************************************************************************************Delete Alternate Nodes(13/10)
+class Solution {
+  public:
+    void deleteAlt(struct Node *head) {
+        Node* curr = head;
+        Node* next;
+        while(curr!= NULL && curr -> next!= NULL) {
+        next = curr -> next;
+        curr -> next = next -> next;
+        curr = next -> next;
+        delete(next);
+    }
+    }
+};
