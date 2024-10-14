@@ -3979,3 +3979,15 @@ class Solution {
     }
     }
 };
+// ***************************************************************************************Count Linked LIst Nodes(14/10)
+class Solution {
+  public:
+    int getCount(struct Node* head) {
+       int cnt = 0;
+       while(head){
+           cnt++;
+           head = head -> next;
+       }
+       return cnt;
+    }
+};
