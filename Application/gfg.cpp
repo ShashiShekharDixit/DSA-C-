@@ -3991,3 +3991,21 @@ class Solution {
        return cnt;
     }
 };
+// *******************************************************************************************Subarray range with given Sum(15/10)
+class Solution {
+  public:
+    int subArraySum(vector<int>& arr, int tar) {
+        unordered_map<int, int> mp;
+        mp[0] = 1;
+        int sum = 0;
+        int ans = 0;
+        for(auto &e : arr){
+            sum += e;
+            if(mp.count(sum - tar)){
+                ans += mp[sum - tar];
+            }
+            mp[sum]++;
+        }
+        return ans;
+    }
+};
