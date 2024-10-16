@@ -4009,3 +4009,21 @@ class Solution {
         return ans;
     }
 };
+// **********************************************************************************************Two swap(16/10)
+class Solution {
+  public:
+    bool checkSorted(vector<int> &arr) {
+        int cnt=0, i=0; 
+        while(i<arr.size()) {
+            if(arr[i]==i+1) {
+                i++;
+                continue; 
+            }
+            swap(arr[i], arr[arr[i]-1]);
+            cnt++;
+            if(cnt>2) return false;
+        }
+        if(cnt==0 || cnt==2) return true;
+        return false;
+    }
+};
