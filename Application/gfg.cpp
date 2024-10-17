@@ -4027,3 +4027,32 @@ class Solution {
         return false;
     }
 };
+// ***************************************************************************************************Split Linked List Alternatingly(17/10)
+class Solution {
+  public:
+    // Function to split a linked list into two lists alternately
+    vector<Node*> alternatingSplitList(struct Node* head) {
+        vector<Node*>ans;
+        struct Node* head1 = head;
+        struct Node* head2 = head -> next;
+        ans.push_back(head1);
+        ans.push_back(head2);
+        head = head2 -> next;
+        int count = 3;
+        while(head){
+            if(count % 2 != 0){
+                head1 -> next = head;
+                head = head -> next;
+                head1 = head1 -> next;
+            } else {
+                head2 -> next = head;
+                head = head -> next;
+                head2 = head1 -> next;
+            }
+            count++;
+        }
+        head1 -> next = NULL;
+        head2 -> next = NULL;
+        return ans;
+    }
+};
