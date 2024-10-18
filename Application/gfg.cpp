@@ -4030,7 +4030,6 @@ class Solution {
 // ***************************************************************************************************Split Linked List Alternatingly(17/10)
 class Solution {
   public:
-    // Function to split a linked list into two lists alternately
     vector<Node*> alternatingSplitList(struct Node* head) {
         vector<Node*>ans;
         struct Node* head1 = head;
@@ -4054,5 +4053,28 @@ class Solution {
         head1 -> next = NULL;
         head2 -> next = NULL;
         return ans;
+    }
+};
+// ******************************************************************************************************Single Number(18/10)
+class Solution {
+  public:
+    int getSingle(vector<int>& arr) {
+        int n = arr.size();
+        sort(arr.begin(), arr.end());
+        int count = 1;
+        int num = arr[0];
+        for(int i = 1; i < n; i++)
+        {
+            if(num == arr[i]){
+                count++;
+            }
+            else if(count % 2 != 0)
+            break;
+            else {
+                num = arr[i];
+                count = 1;
+            }
+        }
+        return num;
     }
 };
