@@ -4220,7 +4220,6 @@ class Solution {
 class Solution {
   public:
     struct Node* quickSort(struct Node* head) {
-        // code here
         if(!head)
         return head;
         int i = 0;
