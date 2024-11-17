@@ -4240,7 +4240,7 @@ class Solution {
     }
 };
 // ***********************************************************************************************Reverse an Array(17/11)
-lass Solution {
+class Solution {
   public:
     void reverseArray(vector<int> &arr) {
         int n = arr.size();
