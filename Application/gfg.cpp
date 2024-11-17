@@ -4239,3 +4239,15 @@ class Solution {
         return head;
     }
 };
+// ***********************************************************************************************Reverse an Array(17/11)
+lass Solution {
+  public:
+    void reverseArray(vector<int> &arr) {
+        int n = arr.size();
+        for(int i = 0; i < n / 2; i++){
+            int temp = arr[i];
+            arr[i] = arr[n - i - 1];
+            arr[n - i - 1] = temp;
+        }
+    }
+};
